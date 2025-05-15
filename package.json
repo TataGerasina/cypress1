@@ -1,5 +1,22 @@
 {
   "dependencies": {
-    "cypress": "^14.3.3"
+    "cypress": "^14.3.3",
+    "intro": "file:"
+  },
+  "scripts": {
+    
+    "laptop:chrome": "cypress open --config-file cypess.laptop.config.js --browser chrome",
+    "laptop:electron": "cypress open --config-file cypress.laptop.config.js --browser electron",
+    "mobile:chrome": "cypress open --config-file cypress.mobile.config.js --browser chrome",
+    "mobile:electron": "cypress open --config-file cypress.mobile.config.js --browser electron",
+
+    "laptop:chrome:ci": "cypress run --config-file cypress.laptop.config.js --browser chrome --headless",
+    "laptop:electron:ci": "cypress run --config-file cypress.laptop.config.js --browser electron --headless",
+    "mobile:chrome:ci": "cypress run --config-file cypress.mobile.config.js --browser chrome --headless",
+    "mobile:electron:ci": "cypress run --config-file cypress.mobile.config.js --browser electron --headless",
+
+    "test:all:laptop": "npm run laptop:chrome:ci && npm run laptop:electron:ci",
+    "test:all:mobile": "npm run mobile:chrome:ci && npm run mobile:electron:ci",
+    "test:all": "npm run test:all:laptop && npm run test:all:mobile"
   }
 }
